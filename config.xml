@@ -1,7 +1,7 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="es.fisicabachiller.es="1.0.0">
-  <name>Tiro Parabólico</name>
-  <description>Cálculo Tiro Parabólico</description>
-  <author email="a.vilchesmartin@gmail.es">Antonio Vilches</author>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="es.parlamentoandaluz.app" version="1.0.0">
+  <name>Parlamento de Andalucía</name>
+  <description>APP Parlamento de Andalucía</description>
+  <author email="a.vilches@parlamento-and.es">Test</author>
   <content src="index.html"/>
 
   <platform name="android"></platform>

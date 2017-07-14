@@ -7,7 +7,10 @@
 
 
     <link rel="stylesheet" href="./css/estilos.css" />
-    
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>    
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>	   
     
 
 	<style type="text/css">
@@ -78,13 +81,14 @@ def echo(*args):
     altura=round((v0*(math.sin(math.pi*angulo/180)))**2/(2*9.8),2)
     tiempo=round(((2*v0y)/9.8),2)
     
-
     datos="Vo: " + str(v0) + " m/s" + \
     " Angulo: " + str(angulo) + " grados." 
 
     resultados="Altura máxima: " + str(altura) + " metros." + \
     " Alcance: " + str(alcance) + " metros." + \
     " Tiempo de vuelo: " + str(tiempo) + " segundos."
+
+    alert(resultados)
 
     doc['zone'].text = ''
     doc['zone'] <= html.H4("DATOS:")

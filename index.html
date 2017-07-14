@@ -1,87 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
-	<meta name="MobileOptimized" content="320"/>
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta http-equiv="cleartype" content="on">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <title>Tiro Parabólico</title>
 
-	<title>Física de Bachillerato</title>
 
-	
-	<link rel="stylesheet" href="./css/estilos.css" />
+    <link rel="stylesheet" href="./css/estilos.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>    
-    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>	
-    <script type="text/javascript" src="./js/brython_dist.js"></script>
-		
-	
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>	   
+    
+
 	<style type="text/css">
-		a {text-decoration: none; color: blue;}
-
-		.listItemNoIcon .ui-icon
-		{
-	 		display: none;
-		}
-
-		.ui-header .ui-title {
- 			overflow: visible !important;
-  			white-space: normal !important;
-  			font-size: 18px;
-			}
-
-		.ui-footer .ui-title {
- 			overflow: visible !important;
-  			white-space: normal !important;
-			}
-	</style>
-
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        
+        .listItemNoIcon .ui-icon {
+            display: none;
+        }
+        
+        .ui-header .ui-title {
+            overflow: visible !important;
+            white-space: normal !important;
+            font-size: 18px;
+        }
+        
+        .ui-footer .ui-title {
+            overflow: visible !important;
+            white-space: normal !important;
+        }
+        
+        .checkbox {
+            display: inline-block !important;
+            cursor: pointer;
+            font-size: 25px !important;  
+            margin: 0px !important;              
+        }
+        input[type=checkbox] {
+            display: none;
+        }
+        .checkbox:before {
+            content: "";
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+            background-color: white;
+            color: black;
+            text-align: center;
+            box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+            border-radius: 3px;
+        }
+        input[type=checkbox]:checked + .checkbox:before {
+            content: "\2713";
+            background-color: #0088cc;
+            text-shadow: 1px 1px 1px black;
+            font-size: 22px;
+        }    
+    </style>
 </head>
-<body>
 
- 
-<div data-role="page">
-	<div data-role="content">
-			<div class="container"><p></p><img class="img1" src="img/fisica.jpg"</div>
-			<h3><div style="text-align: center">FÍSICA DE BACHILLERATO</div></h3>
-	</div>
-    <p></p>
+<!-- ******************************************************************** -->
+<script type="text/python">
+from browser import document as doc
+from browser import alert, html
+import math 
 
-	
-	<div data-role="collapsible" data-theme="b" data-content-theme="e">
-    	<h4><center>TIRO PARABÓLICO<center></h4>        
+def echo(*args):     
+    angulo=float(doc["input_angulo"].value)
+    v0=float(doc["input_v0"].value)
 
-    	<ul data-role="listview">        
-			<a href="parabolico1.html" data-role="button">Datos: velocidad inicial y altura</a>
-			<p></p>							
-		</ul><p></p>
-	</div> 
+    v0x=round(v0*(math.cos(math.pi*angulo/180)),2)
+    v0y=round(v0*(math.sin(math.pi*angulo/180)),2)
 
+    alcance=round((v0**2)*(math.sin(math.pi*2*angulo/180))/9.8,2)
+    altura=round((v0*(math.sin(math.pi*angulo/180)))**2/(2*9.8),2)
+    tiempo=round(((2*v0y)/9.8),2)
     
+    datos="Vo: " + str(v0) + " m/s" + \
+    " Angulo: " + str(angulo) + " grados." 
 
-    <div data-role="collapsible" data-theme="b" data-content-theme="e">
-        <h4><center>PLANOS INCLINADOS</center></h4>
-    
-   		<ul data-role="listview">   				
-   			<a href="plano1.html" data-role="button">Plano inclinado simple</a>
-            <p></p>			
-		</ul><p></p>
-	</div>	
+    resultados="Altura máxima: " + str(altura) + " metros." + \
+    " Alcance: " + str(alcance) + " metros." + \
+    " Tiempo de vuelo: " + str(tiempo) + " segundos."
+
+    alert(resultados)
+
+    doc['zone'].text = ''
+    doc['zone'] <= html.H4("DATOS:")
+    doc['zone'] <= datos
+    doc['zone'] <= html.H4("SOLUCION:")
+    doc['zone'] <= resultados
+           
+
+doc["pass"].bind("click", echo)    
+
+</script>
+<!-- ******************************************************************** -->
+
+<body onload="brython()">
+
+<div class="container"><p></p><img class="img2" src="img/tiro_parabolico.jpg"</div>
+<center><font color="black"><h2>TIRO PARABÓLICO</h2></font></center><p></p>
+<hr style="color: green;" />     
 
 
-	<div data-role="footer" data-theme="w">
-		<h4></h4>
-	</div>
+<p><input  type="number" min=0 id="input_v0" required placeholder="Velocidad inicial (m/s)">
+<p><input  type="number" min=0 id="input_angulo" required placeholder="Ángulo lanzamiento (grados)">
+<button id="pass">CALCULAR</button>
 
-	<div data-role="footer" data-theme="b"> 		
-		<center><img  src="img/spock.jpg"></center>
-	</div>
+<table width="100%">
+<td id="zone" style="background-color:orange;text-align:center;"></td>
+</table>
 
-    
-</div><!-- /page -->
-
+<script type="text/javascript" src="./js/brython_dist.js"></script>
 </body>
+
 </html>
+

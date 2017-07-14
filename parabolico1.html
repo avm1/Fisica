@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="MobileOptimized" content="320" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="cleartype" content="on">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+    <title>Tiro Parabólico</title>
+
+
+    <link rel="stylesheet" href="css/estilos.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <script type="text/javascript" src="js/mio.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+	<script type="text/javascript" src="js/brython.js"></script>
+    <script type="text/javascript" src="js/brython_stdlib.js"></script>
+    
+
+	<style type="text/css">
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+        
+        .listItemNoIcon .ui-icon {
+            display: none;
+        }
+        
+        .ui-header .ui-title {
+            overflow: visible !important;
+            white-space: normal !important;
+            font-size: 18px;
+        }
+        
+        .ui-footer .ui-title {
+            overflow: visible !important;
+            white-space: normal !important;
+        }
+        
+        .checkbox {
+            display: inline-block !important;
+            cursor: pointer;
+            font-size: 25px !important;  
+            margin: 0px !important;              
+        }
+        input[type=checkbox] {
+            display: none;
+        }
+        .checkbox:before {
+            content: "";
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            vertical-align: middle;
+            background-color: white;
+            color: black;
+            text-align: center;
+            box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+            border-radius: 3px;
+        }
+        input[type=checkbox]:checked + .checkbox:before {
+            content: "\2713";
+            background-color: #0088cc;
+            text-shadow: 1px 1px 1px black;
+            font-size: 22px;
+        }    
+    </style>
+</head>
+<h1><div style="text-align: center; color: blue">TIRO PARABÓLICO</div></h1><p></p>
+<div class="container"><img class="img3" src="img/tiro_parabolico.jpg"></div>                
+
+<!-- ******************************************************************** -->
+<body onload="brython()">
+
+<script type="text/python">
+from browser import document as doc
+from browser import alert, html
+import math 
+
+def echo(*args):     
+    angulo=float(doc["input_angulo"].value)
+    v0=float(doc["input_v0"].value)
+
+    v0x=round(v0*(math.cos(math.pi*angulo/180)),2)
+    v0y=round(v0*(math.sin(math.pi*angulo/180)),2)
+
+    alcance=round((v0**2)*(math.sin(math.pi*2*angulo/180))/9.8,2)
+    altura=round((v0*(math.sin(math.pi*angulo/180)))**2/(2*9.8),2)
+    tiempo=round(((2*v0y)/9.8),2)
+    
+
+    datos="Vo: " + str(v0) + " m/s" + \
+    " Angulo: " + str(angulo) + " grados." 
+
+    resultados="Altura máxima: " + str(altura) + " metros." + \
+    " Alcance: " + str(alcance) + " metros." + \
+    " Tiempo de vuelo: " + str(tiempo) + " segundos."
+
+    doc['zone'].text = ''
+    doc['zone'] <= html.H4("DATOS:")
+    doc['zone'] <= datos
+    doc['zone'] <= html.H4("SOLUCION:")
+    doc['zone'] <= resultados
+           
+   
+
+doc["pass"].bind("click", echo)    
+
+
+
+</script>
+<!-- ******************************************************************** -->
+
+
+<p><input  type="number" min=0 id="input_v0" required placeholder="Velocidad inicial (m/s)">
+<p><input  type="number" min=0 id="input_angulo" required placeholder="Ángulo lanzamiento (grados)">
+<button id="pass">CALCULAR</button>
+
+<table width="100%">
+<td id="zone" style="background-color:orange;text-align:center;"></td>
+</table>
+
+</body>
+
+</html>
+

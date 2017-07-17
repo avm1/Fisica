@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+    <title>Plano inclinado simple</title>
+
+    <link rel="stylesheet" href="./css/estilos.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>    
+    
+</head>
+
+<!-- ******************************************************************** -->
+<script type="text/python">
+from browser import document as doc
+from browser import alert, html
+import math 
+
+def echo(*args):     
+    masa=float(doc["input_masa"].value)
+    angulo=float(doc["input_angulo"].value)   
+    rozamiento=float(doc["input_rozamiento"].value)
+
+    Fx=round(masa*9.8*(math.sin(math.pi*angulo/180)),2)
+    Fy=round(masa*9.8*(math.cos(math.pi*angulo/180)),2)
+    Fr=round(Fy*rozamiento,2)
+    F=round(Fx-Fr,2)
+    aceleracion=round(F/masa,2)    
+ 
+    
+    datos="Masa " + str(masa) + " Kg." + \
+    " Angulo: " + str(angulo) + " grados." + " Coeficiente de rozamiento: " + str(rozamiento)
+
+    if F <= 0:
+        resultados1="El cuerpo no se mueve"
+    else:
+        resultados1="Fx: " + str(Fx) + " Newton." + " Fy: " + str(Fy) + " Newton."
+        resultados2="Fuerza bajada: " + str(F) + " Newton." + \
+        " Aceleración: " + str(aceleracion) + " metros/s^2." + \
+        " Fuerza Rozamiento: " + str(Fr) + " Newton."
+
+    doc['zone'].text = ''
+    doc['zone'] <= html.H4("DATOS:")
+    doc['zone'] <= datos
+    doc['zone'] <= html.H4("SOLUCIÓN:")
+    doc['zone'] <= resultados1
+    doc['zone'] <= html.P("")
+    doc['zone'] <= resultados2
+           
+
+doc["pass"].bind("click", echo)    
+
+</script>
+<!-- ******************************************************************** -->
+
+<body onload="brython()">
+
+<div class="container"><p></p><img class="img2" src="img/plano_inclinado1.png"</div>
+<center><font color="black"><h2>PLANO INCLINADO SIMPLE</h2></font></center><p></p>
+<hr style="color: green;" />     
+
+
+<p><input  type="number" min=0 step="any" id="input_masa" required placeholder="Masa (Kg)">
+<p><input  type="number" min=0 step="any" id="input_angulo" required placeholder="Ángulo (grados)">
+<p><input  type="number" min="0" step="any" id="input_rozamiento" required placeholder="Coeficiente de rozamiento (0 si no existe rozamiento)">
+<button id="pass">CALCULAR</button>
+
+<table width="100%">
+<td id="zone" style="color: black; text-align: center; background: orange; text-shadow: 0em 0em 0em; border-width:1px; border-style: solid"></td>
+</table>
+
+<script type="text/javascript" src="./js/brython_dist.js"></script>
+</body>
+
+</html>

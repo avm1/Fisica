@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
-    <title>Plano inclinado simple</title>
+    <title>DOS MASA UNIDAS POR UNA POLEA EN UN PLANO INCLINADO</title>
 
     <link rel="stylesheet" href="./css/estilos.css" />
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
@@ -19,11 +19,12 @@ from browser import html
 import math 
 
 def echo(*args):     
-    masa=float(doc["input_masa"].value)
+    masa1=float(doc["input_masa1"].value)
+    masa2=float(doc["input_masa2"].value)
     angulo=float(doc["input_angulo"].value)   
     rozamiento=float(doc["input_rozamiento"].value)
 
-    Fx=round(masa*9.8*(math.sin(math.pi*angulo/180)),2)
+    Fx=round(masa1*9.8*(math.sin(math.pi*angulo/180)),2)
     Fy=round(masa*9.8*(math.cos(math.pi*angulo/180)),2)
     Fr=round(Fy*rozamiento,2)
     F=round(Fx-Fr,2)
@@ -57,12 +58,13 @@ doc["pass"].bind("click", echo)
 
 <body onload="brython()">
 
-<div class="container"><p></p><img class="img2" src="img/plano_inclinado1.png"</div>
-<center><font color="black"><h2>PLANO INCLINADO SIMPLE</h2></font></center><p></p>
+<div class="container"><p></p><img class="img2" src="img/plano_polea.png"</div>
+<center><font color="black"><h2>DOS MASA UNIDAS POR UNA POLEA EN UN PLANO INCLINADO</h2></font></center><p></p>
 <hr style="color: green;" />     
 
 
-<p><input  type="number" min=0 step="any" id="input_masa" required placeholder="Masa (Kg)">
+<p><input  type="number" min=0 step="any" id="input_masa1" required placeholder="Masa m1 (Kg)">
+<p><input  type="number" min=0 step="any" id="input_masa2" required placeholder="Masa m2 (Kg)">
 <p><input  type="number" min=0 step="any" id="input_angulo" required placeholder="Ángulo (grados)">
 <p><input  type="number" min="0" max="1" step="any" id="input_rozamiento" required placeholder="Coeficiente de rozamiento (0 si no existe rozamiento)">
 <button id="pass">CALCULAR</button>

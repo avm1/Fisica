@@ -43,7 +43,7 @@
   <gap:plugin name="cordova-plugin-network-information" source="npm"/>  
   <gap:plugin name="cordova-plugin-vibration" source="npm"/>
   
-  <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
+  <plugin name="cordova-plugin-splashscreen" spec="6.5.0" />
 
   
 

@@ -6,17 +6,11 @@
 
   <platform name="android"></platform>
   
-  <feature name="SplashScreen">
-    <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
-  </feature>
-  <splash src="splash.png"  width="640" height="960"/>  
-  <preference name="ShowSplashScreen" value="true" />
-  <preference name="SplashScreen" value="screen"/>
-  <preference name="SplashScreenDelay" value="3000"/>
-  <preference name="AutoHideSplashScreen" value="true" />
+  <splash src="./splash.png"  width="640" height="960"/>   
+  <preference name="SplashScreen" value="screen" />
   <preference name="SplashShowOnlyFirstTime" value="false" />
-  <preference name="FadeSplashScreen" value="false"/>
-  
+  <preference name="FadeSplashScreen" value="false" />
+   
       
   <preference name="permissions" value="none"/>
   
@@ -53,7 +47,9 @@
   <gap:plugin name="cordova-plugin-media" source="npm"/>
   <gap:plugin name="cordova-plugin-network-information" source="npm"/>  
   <gap:plugin name="cordova-plugin-vibration" source="npm"/>
-  <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
+  
+  
+  <plugin name="cordova-plugin-splashscreen" spec="^3.2.2" />
   
     
   <feature name="InAppBrowser">

@@ -6,7 +6,7 @@
 
   <platform name="android"></platform>
   
-  <gap:splash gap:platform="android" src="splash.png" />   
+  <splash src="splash.png" width="640" height="960" />  
   <preference name="SplashScreen" value="screen" />
   <preference name="SplashShowOnlyFirstTime" value="false" />
   <preference name="FadeSplashScreen" value="false" />

@@ -9,7 +9,7 @@
   <feature name="SplashScreen">
     <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
   </feature>
-  <splash src="splash.png" width="640" height="960" />  
+  <splash src="splash.png"/>  
   <preference name="ShowSplashScreen" value="true" />
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>

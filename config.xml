@@ -27,7 +27,7 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="7"/>
   <preference name="android-installLocation" value="auto"/>
-
+  <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
   <gap:plugin name="cordova-plugin-battery-status" source="npm"/>
   <gap:plugin name="cordova-plugin-camera" source="npm"/>
   <gap:plugin name="cordova-plugin-media-capture" source="npm"/>
@@ -37,8 +37,6 @@
   <gap:plugin name="cordova-plugin-device-motion" source="npm"/>
   <gap:plugin name="cordova-plugin-device-orientation" source="npm"/>
   <gap:plugin name="cordova-plugin-dialogs" source="npm"/>
-  
-  
   <gap:plugin name="cordova-plugin-geolocation" source="npm"/>
   <gap:plugin name="cordova-plugin-globalization" source="npm"/>
   <gap:plugin name="cordova-plugin-inappbrowser" source="npm"/>
@@ -46,7 +44,7 @@
   <gap:plugin name="cordova-plugin-network-information" source="npm"/>
   <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
   <gap:plugin name="cordova-plugin-vibration" source="npm"/>
-  <gap:plugin name="cordova-plugin-splashscreen" source="npm"/>
+  
 
   <feature name="InAppBrowser">
     <param name="android-package" value="cordova-plugin-inappbrowser.InAppBrowser" />

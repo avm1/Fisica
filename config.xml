@@ -6,7 +6,7 @@
 
   <platform name="android"></platform>
   
-  <splash src="splash.png" width="640" height="960" />  
+  <splash src="../splash.png" width="640" height="960" />  
   <preference name="SplashScreen" value="splash" />
   <preference name="SplashShowOnlyFirstTime" value="false" />
   <preference name="FadeSplashScreen" value="false" />

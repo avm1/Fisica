@@ -6,10 +6,18 @@
 
   <platform name="android"></platform>
   
-  <splash qualifier="port-hdpi" src="splash.png"/>  
+  <splash src="splash.png"/>  
   <preference name="SplashScreen" value="splash" />
   <preference name="SplashShowOnlyFirstTime" value="false" />
   <preference name="FadeSplashScreen" value="false" />
+ 
+<platform name="android">  
+  <splash src="splash.png" qualifier="ldpi"/>  
+  <splash src="splash.png" qualifier="mdpi"/>  
+  <splash src="splash.png" qualifier="hdpi"/>  
+  <splash src="splash.png" qualifier="xhdpi"/>  
+  <splash src="splash.png" qualifier="xxhdpi"/>  
+</platform>  
    
       
   <preference name="permissions" value="none"/>
